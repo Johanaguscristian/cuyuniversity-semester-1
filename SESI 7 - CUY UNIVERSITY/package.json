@@ -1,0 +1,15 @@
+{
+  "name": "sesi-7---cuy-university",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "nyala": "nodemon index.js"
+  },
+  "author": "johan",
+  "license": "ISC",
+  "description": "sesi 7 cuyuniversity backend",
+  "dependencies": {
+    "nodemo": "^1.0.0",
+    "rupiah-format": "^1.0.0"
+  }
+}

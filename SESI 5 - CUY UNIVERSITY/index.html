@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesi 5 CuyUniv</title>
+</head>
+<style>
+    #root {
+        background-color: tomato;
+        color: white;
+        font-size: 2em;
+        text-align: center;
+        height: 100vh;
+        display: block;
+    }
+
+    .container-content {
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .a-content {
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        border-radius: 80px;
+        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    body {
+        padding: 0%;
+        margin: 0%;
+    }
+</style>
+
+<body>
+    <!-- INI KONTEN KITA -->
+    <div id="root">
+            <input placeholder="Username" type="text" id="usernameInput" />
+            <input placeholder="Password" type="password" id="passwordInput" />
+            <div style="display: flex; justify-content: center; align-items: center; padding: 10px;">
+                <button onclick="onLogin()" id="loginButton">LOGIN</button>
+                <button onclick="onLogout()" id="logoutButton">LOG-OUT</button>
+            </div>
+            <div class="countainer-content" id="admin">
+                <h1 class="a-content">LOGIN SEBAGAI ADMIN</h1>
+            </div>
+            <div class="countainer-content" id="basic">
+                <h1 class="a-content">LOGIN SEBAGAI USER BIASA</h1>
+            </div>
+            <div class="countainer-content" id="wakil">
+                <h1 class="a-content">LOGIN SEBAGAI WAKIL</h1>
+            </div>
+            <div class="countainer-content" id="pegawai">
+                <h1 class="a-content">LOGIN SEBAGAI PEGAWAI</h1>
+            </div>
+    </div>
+
+    <script type="application/javascript">
+
+        let usernameInput = document.getElementById('usernameInput')
+        let passwordInput = document.getElementById('passwordInput')
+        let loginButton = document.getElementById('loginButton')
+        let logoutButton = document.getElementById('logoutButton')
+        let admin = document.getElementById('admin')
+        let basic = document.getElementById('basic')
+        let wakil = document.getElementById('wakil')
+        let pegawai = document.getElementById('pegawai')
+
+        admin.style.display = "none"
+        basic.style.display = "none"
+        wakil.style.display = "none"
+        pegawai.style.display = "none"
+        logoutButton.style.display = "none"
+
+        function onLogin() {
+            localStorage.setItem("username", usernameInput.value)
+            logoutButton.style.display = "block"
+            if (usernameInput.value == "admin" && passwordInput.value == "admin123") {
+                localStorage.setItem("role", "admin")
+                usernameInput.style.display = "none"
+                passwordInput.style.display = "none"
+                loginButton.style.display = "none"
+                basic.style.display = "none"
+                wakil.style.display = "none"
+                pegawai.style.display = "none"
+                admin.style.display = "block"
+            } else if (usernameInput.value == "wakil" && passwordInput.value == "wakil123") {
+                localStorage.setItem("role", "wakil")
+                usernameInput.style.display = "none"
+                passwordInput.style.display = "none"
+                loginButton.style.display = "none"
+                admin.style.display = "none"
+                basic.style.display = "none"
+                pegawai.style.display = "none"
+                wakil.style.display = "block"
+            } else if (usernameInput.value == "pegawai" && passwordInput.value == "pegawai123") {
+                localStorage.setItem("role", "pegawai")
+                usernameInput.style.display = "none"
+                passwordInput.style.display = "none"
+                loginButton.style.display = "none"
+                admin.style.display = "none"
+                basic.style.display = "none"
+                wakil.style.display = "none"
+                pegawai.style.display = "block"
+            } else {
+                usernameInput.style.display = "none"
+                passwordInput.style.display = "none"
+                loginButton.style.display = "none"
+                admin.style.display = "none"
+                pegawai.style.display = "none"
+                wakil.style.display = "none"
+                basic.style.display = "block"
+            }
+        }
+
+        if (localStorage.getItem('username')) {
+            usernameInput.style.display = "none"
+            passwordInput.style.display = "none"
+            loginButton.style.display = "none"
+            logoutButton.style.display = "block"
+            if (localStorage.getItem('role') == "admin") {
+                basic.style.display = "none"
+                wakil.style.display = "none"
+                pegawai.style.display = "none"
+                admin.style.display = "block"
+            } else if (localStorage.getItem('role') == "wakil") {
+                admin.style.display = "none"
+                basic.style.display = "none"
+                pegawai.style.display = "none"
+                wakil.style.display = "block"
+            } else if (localStorage.getItem('role') == "pegawai") {
+                admin.style.display = "none"
+                basic.style.display = "none"
+                wakil.style.display = "none"
+                pegawai.style.display = "block"
+            } else {
+                admin.style.display = "none"
+                pegawai.style.display = "none"
+                wakil.style.display = "none"
+                basic.style.display = "block"
+            }
+        }
+
+        function onLogout() {
+            localStorage.clear()
+            location.reload()
+        }
+    </script>
+</body>
+
+</html>
